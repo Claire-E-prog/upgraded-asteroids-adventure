@@ -15,14 +15,19 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
     x = SCREEN_WIDTH/2
     y = SCREEN_WIDTH/2
+    
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    
     Player.containers = (updatable, drawable)
-    Asteroid.containers = (updatable, drawable)
-    AsteroidField.containers = (updatable)
+    Asteroid.containers = (asteroids, updatable, drawable)  
+    AsteroidField.containers = (updatable,)
+
     player = Player(x, y)
     asteroid = Asteroid(x, y, radius=ASTEROID_MIN_RADIUS)
     asteroid_field = AsteroidField()
+    
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     dt = 0
