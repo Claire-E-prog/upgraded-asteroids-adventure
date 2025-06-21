@@ -52,6 +52,10 @@ def main():
                 #pygame.display.set_caption("Game Over!")
                 #game_over = True
                 sys.exit()
+            for s in shots:
+                if a.detect_collision(s):
+                    a.kill()
+                    s.kill()
         pygame.display.flip()
         dt = clock.tick(60)/1000
 
